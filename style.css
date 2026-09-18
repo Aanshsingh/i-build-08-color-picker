@@ -1,0 +1,224 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+ 
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #000;
+  padding: 24px;
+}
+ 
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+ 
+.container {
+  width: 380px;
+  max-width: 100%;
+  background: #2c2c2e;
+  border-radius: 20px;
+  padding: 18px 18px 20px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+ 
+/* ---------- Head ---------- */
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 16px;
+  padding: 4px 0;
+}
+ 
+.eyeDrop {
+  position: absolute;
+  left: 4px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
+  opacity: 0.9;
+}
+ 
+.eyeDrop::before {
+  content: "\1F58C\FE0F";
+  font-size: 18px;
+  color: #fff;
+}
+ 
+.eyeDrop.active {
+  filter: drop-shadow(0 0 4px #4da3ff);
+}
+ 
+.title {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+}
+ 
+/* ---------- Middle ---------- */
+.middle {
+  display: flex;
+  flex-direction: column;
+}
+ 
+.colorBox {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+ 
+.swatch-cell {
+  aspect-ratio: 1;
+  cursor: pointer;
+  position: relative;
+}
+ 
+.swatch-cell.selected::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+ 
+/* ---------- Opacity ---------- */
+.opacity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+ 
+.opacitySlider {
+  flex: 1;
+  position: relative;
+  height: 16px;
+}
+ 
+.opacitySlider input[type="range"] {
+  width: 100%;
+  height: 16px;
+  border-radius: 999px;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  background-image: linear-gradient(45deg, #666 25%, transparent 25%),
+    linear-gradient(-45deg, #666 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #666 75%),
+    linear-gradient(-45deg, transparent 75%, #666 75%);
+  background-size: 8px 8px;
+  background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+  background-color: #222;
+}
+ 
+.opacitySlider .fill-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  border-radius: 999px 0 0 999px;
+  pointer-events: none;
+  width: 100%;
+}
+ 
+.opacitySlider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+ 
+.opacityPercentage {
+  background: #000;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 10px;
+  min-width: 58px;
+  text-align: center;
+}
+ 
+/* ---------- Bottom ---------- */
+.bottom {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+ 
+.colorselected {
+  width: 56px;
+  height: 96px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-image: linear-gradient(45deg, #666 25%, transparent 25%),
+    linear-gradient(-45deg, #666 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #666 75%),
+    linear-gradient(-45deg, transparent 75%, #666 75%);
+  background-size: 10px 10px;
+  background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
+  position: relative;
+}
+ 
+.colorselected .fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+}
+ 
+.colors {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+ 
+.saved-swatch {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  position: relative;
+}
+ 
+.saved-swatch.selected {
+  border-color: #fff;
+}
+ 
+.saved-swatch.add-btn {
+  background: #48484a;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 400;
+  border: none;
+}
